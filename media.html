@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - CDI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        .media-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .media-section {
+            padding: 80px 0;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .media-item {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .media-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .media-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .media-item video {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .media-info {
+            padding: 20px;
+        }
+
+        .media-info h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .media-info p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .media-category {
+            margin-bottom: 40px;
+        }
+
+        .media-category h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .media-category p {
+            text-align: center;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo" data-aos="fade-right">
+                <a href="index.html">
+                    <h1>CDI<span>.</span></h1>
+                </a>
+            </div>
+            <nav class="navbar" data-aos="fade-left">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="media.html" class="active">Gallery</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Media Hero Section -->
+    <section class="media-hero">
+        <div class="container">
+            <h1 data-aos="fade-up">Our Gallery</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Explore our collection of photos and videos showcasing our journey and achievements</p>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="media-section">
+        <div class="container">
+            <div class="media-category" data-aos="fade-up">
+                <h2>Photo Gallery</h2>
+                <p>Capturing moments of learning, growth, and success at CDI</p>
+                <div class="media-grid">
+                    <div class="media-item" data-aos="fade-up">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Team Training Session">
+                        <div class="media-info">
+                            <h3>Team Training Session</h3>
+                            <p>Our expert instructors leading an interactive workshop on leadership development.</p>
+                        </div>
+                    </div>
+                    <div class="media-item" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="Graduation Ceremony">
+                        <div class="media-info">
+                            <h3>Graduation Ceremony</h3>
+                            <p>Celebrating the achievements of our graduates in the latest certification program.</p>
+                        </div>
+                    </div>
+                    <div class="media-item" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="Corporate Workshop">
+                        <div class="media-info">
+                            <h3>Corporate Workshop</h3>
+                            <p>Hands-on training session for corporate clients on project management.</p>
+                        </div>
+                    </div>
+                    <div class="media-item" data-aos="fade-up" data-aos-delay="300">
+                        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=600&q=80" alt="Networking Event">
+                        <div class="media-info">
+                            <h3>Networking Event</h3>
+                            <p>Annual networking event bringing together industry professionals and alumni.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery Section -->
+    <section class="media-section" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="media-category" data-aos="fade-up">
+                <h2>Video Gallery</h2>
+                <p>Watch our training sessions, testimonials, and success stories</p>
+                <div class="media-grid">
+                    <div class="media-item" data-aos="fade-up">
+                        <video controls poster="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80">
+                            <source src="videos/training-session.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="media-info">
+                            <h3>Leadership Training Session</h3>
+                            <p>Highlights from our intensive leadership development program.</p>
+                        </div>
+                    </div>
+                    <div class="media-item" data-aos="fade-up" data-aos-delay="100">
+                        <video controls poster="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80">
+                            <source src="videos/testimonial.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="media-info">
+                            <h3>Student Success Story</h3>
+                            <p>Hear from our graduates about their journey and achievements.</p>
+                        </div>
+                    </div>
+                    <div class="media-item" data-aos="fade-up" data-aos-delay="200">
+                        <video controls poster="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80">
+                            <source src="videos/workshop.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="media-info">
+                            <h3>Technical Workshop</h3>
+                            <p>Behind the scenes of our hands-on technical training sessions.</p>
+                        </div>
+                    </div>
+                    <div class="media-item" data-aos="fade-up" data-aos-delay="300">
+                        <video controls poster="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=600&q=80">
+                            <source src="videos/event.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="media-info">
+                            <h3>Annual Conference</h3>
+                            <p>Highlights from our annual industry conference and networking event.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about" data-aos="fade-up">
+                    <h3>CDI</h3>
+                    <p>Empowering individuals and organizations through quality education and training.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="media.html">Gallery</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="footer-newsletter" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates and news.</p>
+                    <form id="newsletterForm">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> CDI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html> 

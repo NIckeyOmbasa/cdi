@@ -1,0 +1,19 @@
+/* Add modal and payment styling */
+.modal {
+    display: none;
+    position: fixed;
+    /* rest of modal styles */
+  }
+  
+  .payment-options {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+  }
+  
+  .payment-method {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+  }

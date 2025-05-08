@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - Corporate Development Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Corporate Development <span>Institute</span>.</h1>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="#" class="btn-login logged-in">My Account</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Hero -->
+    <section class="dashboard-hero">
+        <div class="container">
+            <h1>My Learning Dashboard</h1>
+            <p>Track your progress and continue learning</p>
+        </div>
+    </section>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard section-padding">
+        <div class="container">
+            <div class="dashboard-grid">
+                <!-- User Profile Sidebar -->
+                <div class="dashboard-sidebar">
+                    <div class="user-profile">
+                        <div class="profile-image">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3 id="userName">Loading...</h3>
+                        <p id="userEmail">Loading...</p>
+                    </div>
+                    <div class="dashboard-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-book"></i>
+                            <div class="stat-info">
+                                <h4>Enrolled Courses</h4>
+                                <p id="enrolledCount">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-certificate"></i>
+                            <div class="stat-info">
+                                <h4>Certificates</h4>
+                                <p id="certificateCount">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="stat-info">
+                                <h4>Learning Hours</h4>
+                                <p id="learningHours">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-menu">
+                        <a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a>
+                        <a href="#"><i class="fas fa-book"></i> My Courses</a>
+                        <a href="#"><i class="fas fa-certificate"></i> Certificates</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+
+                <!-- Main Content Area -->
+                <div class="dashboard-main">
+                    <!-- Progress Overview -->
+                    <div class="dashboard-section">
+                        <h2>Learning Progress</h2>
+                        <div class="progress-overview">
+                            <div class="progress-card">
+                                <div class="progress-circle">
+                                    <svg viewBox="0 0 36 36" class="circular-chart">
+                                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="circle" stroke-dasharray="75, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <div class="progress-text">75%</div>
+                                </div>
+                                <h3>Overall Progress</h3>
+                            </div>
+                            <div class="progress-stats">
+                                <div class="stat">
+                                    <h4>Courses Completed</h4>
+                                    <p>3/4</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>Current Streak</h4>
+                                    <p>5 days</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>Next Deadline</h4>
+                                    <p>2 days</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enrolled Courses -->
+                    <div class="dashboard-section">
+                        <h2>My Courses</h2>
+                        <div class="courses-grid" id="enrolledCourses">
+                            <!-- Course cards will be dynamically added here -->
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="dashboard-section">
+                        <h2>Recent Activity</h2>
+                        <div class="activity-timeline">
+                            <!-- Activity items will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Corporate Development Institute</h3>
+                    <p>Providing high-quality professional training to help individuals and organizations achieve their full potential.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="#">My Dashboard</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Corporate Development Institute. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
