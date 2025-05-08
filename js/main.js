@@ -13,43 +13,25 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
         }
 
-        mobileMenuBtn.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent event bubbling
+        mobileMenuBtn.addEventListener('click', function() {
             navbar.classList.toggle('active');
-            
-            // Toggle menu icon
-            const icon = this.querySelector('i');
-            if (icon.classList.contains('fa-bars')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+            this.classList.toggle('active');
         });
 
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
-            if (!navbar.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+            if (!e.target.closest('.navbar') && !e.target.closest('.mobile-menu-btn')) {
                 navbar.classList.remove('active');
-                const icon = mobileMenuBtn.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
+                mobileMenuBtn.classList.remove('active');
             }
         });
 
-        // Close menu when clicking on a link
-        const navLinks = navbar.querySelectorAll('a');
+        // Close menu when clicking on a nav link
+        const navLinks = document.querySelectorAll('.navbar a');
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
                 navbar.classList.remove('active');
-                const icon = mobileMenuBtn.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
+                mobileMenuBtn.classList.remove('active');
             });
         });
     }
