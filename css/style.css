@@ -2552,6 +2552,8 @@ header.scrolled .mobile-menu-btn:hover {
 }
 .contact-info .social-links-contact{
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .contact-info .social-links-contact a {
     display: flex;
@@ -2589,7 +2591,7 @@ header.scrolled .mobile-menu-btn:hover {
 
 .info-card:hover {
     transform: translateY(-5px);
-    border-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
 }
 
 .info-card i {
