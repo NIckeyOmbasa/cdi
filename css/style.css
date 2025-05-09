@@ -2550,6 +2550,9 @@ header.scrolled .mobile-menu-btn:hover {
     padding: 80px 0;
     background: #f9f9f9;
 }
+.contact-info .social-links-contact{
+    display: flex;
+}
 .contact-info .social-links-contact a {
     display: flex;
     align-items: center;
@@ -2586,6 +2589,7 @@ header.scrolled .mobile-menu-btn:hover {
 
 .info-card:hover {
     transform: translateY(-5px);
+    border-color: var(--primary-color);
 }
 
 .info-card i {
