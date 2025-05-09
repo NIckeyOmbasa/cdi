@@ -437,6 +437,8 @@ header.scrolled .mobile-menu-btn:hover {
     color: var(--white);
 }
 
+
+
 /* Contact Section */
 .contact-content {
     display: flex;
@@ -2547,6 +2549,23 @@ header.scrolled .mobile-menu-btn:hover {
 .contact-info {
     padding: 80px 0;
     background: #f9f9f9;
+}
+.contact-info .social-links-contact a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: var(--white);
+    transition: all 0.3s ease;
+}
+
+.contact-info .social-links-contact a:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transform: translateY(-3px);
 }
 
 .contact-grid {
