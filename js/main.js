@@ -677,14 +677,6 @@ function initNewsMarquee() {
             marqueeItems.style.animationPlayState = 'running';
         });
     }
-
-    // Hide marquee after 20 seconds
-    const newsMarquee = document.querySelector('.news-marquee');
-    if (newsMarquee) {
-        setTimeout(() => {
-            newsMarquee.classList.add('hidden');
-        }, 20000);
-    }
 }
 
 // Theme Toggle Functionality

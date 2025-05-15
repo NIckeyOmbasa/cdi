@@ -194,7 +194,7 @@ header.scrolled .logo {
 }
 
 .logo-img {
-    height: 50px;
+    height: 60px;
     width: auto;
     margin-right: 10px;
     transition: all 0.3s ease;
@@ -565,13 +565,6 @@ header.scrolled .logo h1 span {
     z-index: 100;
     width: 100%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    opacity: 1;
-    transition: opacity 0.5s ease;
-}
-
-.news-marquee.hidden {
-    opacity: 0;
-    pointer-events: none;
 }
 
 .marquee-container {
@@ -602,7 +595,7 @@ header.scrolled .logo h1 span {
 
 .marquee-items {
     display: inline-flex;
-    animation: marquee 45s linear infinite;
+    animation: marquee 30s linear infinite;
     white-space: nowrap;
     position: relative;
     z-index: 1;
@@ -620,7 +613,7 @@ header.scrolled .logo h1 span {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-100%);
+        transform: translateX(-50%);
     }
 }
 
