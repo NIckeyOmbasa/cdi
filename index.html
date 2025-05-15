@@ -4,12 +4,197 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-signin-client_id" content="YOUR_GOOGLE_CLIENT_ID">
-    <title>Home | Corporate Development Institute</title>
+    <title>CDI | Home</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/TwjV9XYv/cdilogo-color.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Add mobile-menu.js before main.js -->
+    <script src="js/mobile-menu.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/main.js"></script>
+    <style>
+        /* Mobile Menu Styles */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .navbar {
+                position: fixed;
+                top: 80px; /* Header height */
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--bg-color);
+                padding: 2rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 999;
+            }
+
+            .navbar.active {
+                transform: translateX(0);
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .navbar ul li {
+                width: 100%;
+            }
+
+            .navbar ul li a {
+                display: block;
+                padding: 1rem;
+                font-size: 1.2rem;
+            }
+
+            .mobile-menu-btn.active i {
+                transform: rotate(90deg);
+            }
+
+            .mobile-menu-btn i {
+                transition: transform 0.3s ease;
+            }
+        }
+
+        /* Existing styles */
+        .hero {
+            position: relative;
+            height: calc(100vh - 80px - 50px); /* 100vh - header height (80px) - marquee height (50px) */
+            overflow: hidden;
+        }
+
+        .hero-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .carousel-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            padding: 40px;
+            margin-top: 50px;
+            border-radius: 15px;
+            margin-left: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: left;
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .carousel-control.prev {
+            left: 20px;
+        }
+
+        .carousel-control.next {
+            right: 20px;
+        }
+
+        .carousel-control:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                margin: 50px auto 0;
+                max-width: 90%;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header/Navigation -->
@@ -17,7 +202,8 @@
         <div class="container">
             <div class="logo" data-aos="fade-right">
                 <a href="index.html">
-                    <h1>CDI<span>.</span></h1>
+                    <img src="https://i.postimg.cc/sgS6pwGF/cdilogo-color.png" alt="CDI Logo" class="logo-img">
+                    <h1>Corporate Development<span> Institute</span></h1>
                 </a>
             </div>
             <nav class="navbar" data-aos="fade-left">
@@ -26,7 +212,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="team.html">Team</a></li>
                     <li><a href="courses.html">Courses</a></li>
-                    <li><a href="media.html">Gallery</a></li>
+                    <li><a href="media.html">Media</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -39,19 +225,54 @@
         </div>
     </header>
 
+    <!-- News Marquee -->
+    <div class="news-marquee">
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <span class="marquee-label">Latest Updates:</span>
+                <div class="marquee-items">
+                    <span>🎓 New Certification Program Launched - Enroll Now!</span>
+                    <span>📅 Upcoming Workshop: Digital Marketing Essentials - Register Today</span>
+                    <span>🏆 Congratulations to Our Latest Graduates!</span>
+                    <span>🌟 Special Offer: 20% Off on All Business Courses</span>
+                    <span>📢 New Partnership with Industry Leaders Announced</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero">
+        <div class="hero-carousel">
+            <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80');"></div>
+        </div>
+        <button class="carousel-control prev" aria-label="Previous slide">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-control next" aria-label="Next slide">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="carousel-indicators">
+            <button class="indicator active" aria-label="Slide 1"></button>
+            <button class="indicator" aria-label="Slide 2"></button>
+            <button class="indicator" aria-label="Slide 3"></button>
+            <button class="indicator" aria-label="Slide 4"></button>
+            <button class="indicator" aria-label="Slide 5"></button>
+        </div>
         <div class="container">
-            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="hero-content" data-aos="fade-right">
                 <h1>Advance Your Career with Professional Training</h1>
                 <p>Gain in-demand skills from industry experts and accelerate your professional growth.</p>
                 <a href="courses.html" class="btn-primary">Browse Courses</a>
             </div>
         </div>
     </section>
-
-    <!-- About Section -->
-    <section id="about" class="about section-padding">
+     <!-- About Section -->
+     <section id="about" class="about section-padding">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>About Us</h2>
@@ -71,6 +292,34 @@
         </div>
     </section>
 
+    <!-- Features Section -->
+    <section class="features section-padding">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Why Choose Us</h2>
+                <p>Discover what makes us different</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from industry professionals with years of practical experience.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certified Programs</h3>
+                    <p>Earn recognized certifications that boost your career prospects.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-users"></i>
+                    <h3>Flexible Learning</h3>
+                    <p>Choose from online, in-person, or hybrid learning options.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
     <!-- Services Section -->
     <section id="services" class="services section-padding">
         <div class="container">
@@ -175,6 +424,13 @@
                         <i class="fas fa-envelope"></i>
                         <p>info@cdi.co.ke</p>
                     </div>
+                    <br>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
                 <div class="contact-form" data-aos="fade-left">
                     <form id="contactForm">
@@ -202,7 +458,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about" data-aos="fade-up">
-                    <h3>Corporate Development Institute</h3>
+                    <img src="https://i.postimg.cc/hjCpSY6m/cdilogow.png" alt="CDI Logo" style="width: 120px; margin-bottom: 15px;">
+                    <h3>Corporate Development Institute - CDI</h3>
                     <p>Providing high-quality professional training to help individuals and organizations achieve their full potential.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -214,166 +471,40 @@
                 <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="media.html">Gallery</a></li>
-                        <li><a href="#team">Team</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="team.html">Team</a></li>
                         <li><a href="courses.html">Courses</a></li>
+                        <li><a href="media.html">Media</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-newsletter" data-aos="fade-up" data-aos-delay="200">
                     <h3>Newsletter</h3>
-                    <p>Subscribe to our newsletter for the latest updates and course offerings.</p>
+                    <p>Subscribe to our newsletter for updates and exclusive offers.</p>
                     <form id="newsletterForm">
                         <input type="email" placeholder="Your Email" required>
-                        <button type="submit" class="btn-secondary">Subscribe</button>
+                        <button type="submit">Subscribe</button>
                     </form>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> Corporate Development Institute. All Rights Reserved.</p>
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Corporate Development Institute. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <a href="#" class="back-to-top" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Welcome Back</h2>
-            
-            <!-- Google Sign In Button -->
-            <button class="btn-google" id="googleSignIn">
-                <img src="images/google-icon.png" alt="Google Icon">
-                Continue with Google
-            </button>
-            
-            <div class="divider">
-                <span>or</span>
-            </div>
-
-            <!-- Login Form -->
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" required>
-                </div>
-                <button type="submit" class="btn-primary">Login</button>
-            </form>
-            
-            <p class="form-switch">Don't have an account? <a href="#" id="showRegister">Register</a></p>
-        </div>
-    </div>
-
-    <!-- Register Modal -->
-    <div class="modal" id="registerModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Create Account</h2>
-            
-            <!-- Google Sign Up Button -->
-            <button class="btn-google" id="googleSignUp">
-                <img src="images/google-icon.png" alt="Google Icon">
-                Sign up with Google
-            </button>
-            
-            <div class="divider">
-                <span>or</span>
-            </div>
-
-            <!-- Register Form -->
-            <form id="registerForm">
-                <div class="form-group">
-                    <label for="registerName">Full Name</label>
-                    <input type="text" id="registerName" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerEmail">Email</label>
-                    <input type="email" id="registerEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerPassword">Password</label>
-                    <input type="password" id="registerPassword" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerConfirm">Confirm Password</label>
-                    <input type="password" id="registerConfirm" required>
-                </div>
-                <button type="submit" class="btn-primary">Register</button>
-            </form>
-            
-            <p class="form-switch">Already have an account? <a href="#" id="showLogin">Login</a></p>
-        </div>
-    </div>
+    </a>
 
     <!-- Scripts -->
-    <script type="module" src="js/api.js"></script>
-    <script type="module" src="js/main.js"></script>
-    <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS
         AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            mirror: false
-        });
-        
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Back to Top Button Functionality
-        const backToTopButton = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Theme Toggle Functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-        
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeIcon.classList.replace('fa-sun-haze', 'fa-moon-stars');
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            if (newTheme === 'dark') {
-                themeIcon.classList.replace('fa-sun-haze', 'fa-moon-stars');
-            } else {
-                themeIcon.classList.replace('fa-moon-stars', 'fa-sun-haze');
-            }
+            duration: 1000,
+            once: true
         });
     </script>
 </body>

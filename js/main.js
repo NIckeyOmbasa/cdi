@@ -1,40 +1,8 @@
-// Import API
 import api from './api.js';
 
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navbar = document.querySelector('.navbar');
-    
-    if (mobileMenuBtn && navbar) {
-        // Set initial icon state
-        const icon = mobileMenuBtn.querySelector('i');
-        if (!icon) {
-            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-
-        mobileMenuBtn.addEventListener('click', function() {
-            navbar.classList.toggle('active');
-            this.classList.toggle('active');
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.navbar') && !e.target.closest('.mobile-menu-btn')) {
-                navbar.classList.remove('active');
-                mobileMenuBtn.classList.remove('active');
-            }
-        });
-
-        // Close menu when clicking on a nav link
-        const navLinks = document.querySelectorAll('.navbar a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navbar.classList.remove('active');
-                mobileMenuBtn.classList.remove('active');
-            });
-        });
-    }
+    // Remove duplicate mobile menu code since it's handled in mobile-menu.js
     
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -55,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 // Close mobile menu if open
+                const navbar = document.querySelector('.navbar');
                 if (navbar && navbar.classList.contains('active')) {
                     navbar.classList.remove('active');
                 }
@@ -526,3 +495,278 @@ const rateLimiter = {
         this.attempts[action].count++;
     }
 };
+
+// Hero Carousel Functionality
+function initHeroCarousel() {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const prevBtn = document.querySelector('.carousel-control.prev');
+    const nextBtn = document.querySelector('.carousel-control.next');
+    let currentSlide = 0;
+    let slideInterval;
+    let isTransitioning = false;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function showSlide(index) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
+        // Remove active class from current slide and indicator
+        slides[currentSlide].classList.remove('active');
+        indicators[currentSlide].classList.remove('active');
+
+        // Update current slide index
+        currentSlide = (index + slides.length) % slides.length;
+
+        // Add active class to new slide and indicator
+        slides[currentSlide].classList.add('active');
+        indicators[currentSlide].classList.add('active');
+
+        // Reset transition flag after animation completes
+        slides[currentSlide].addEventListener('transitionend', () => {
+            isTransitioning = false;
+        }, { once: true });
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    function startSlideShow() {
+        stopSlideShow();
+        slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopSlideShow() {
+        if (slideInterval) {
+            clearInterval(slideInterval);
+        }
+    }
+
+    function goToSlide(index) {
+        showSlide(index);
+        stopSlideShow();
+        startSlideShow();
+    }
+
+    // Initialize the carousel
+    if (slides.length > 0) {
+        // Ensure first slide is visible
+        slides[0].classList.add('active');
+        indicators[0].classList.add('active');
+        
+        startSlideShow();
+
+        // Event listeners for controls
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                stopSlideShow();
+                startSlideShow();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                stopSlideShow();
+                startSlideShow();
+            });
+        }
+
+        // Event listeners for indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+
+        // Pause on hover
+        const heroSection = document.querySelector('.hero');
+        if (heroSection) {
+            heroSection.addEventListener('mouseenter', stopSlideShow);
+            heroSection.addEventListener('mouseleave', startSlideShow);
+        }
+
+        // Touch events for mobile
+        heroSection.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            stopSlideShow();
+        }, { passive: true });
+
+        heroSection.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            startSlideShow();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+                stopSlideShow();
+                startSlideShow();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+                stopSlideShow();
+                startSlideShow();
+            }
+        });
+
+        // Handle visibility change
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopSlideShow();
+            } else {
+                startSlideShow();
+            }
+        });
+    }
+}
+
+// Initialize all components when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initMobileMenu();
+    initSmoothScroll();
+    initLoginModal();
+    initContactForm();
+    initNewsletterForm();
+    initStickyHeader();
+    initNavbarScroll();
+    initHeroCarousel();
+    initNewsMarquee();
+    initThemeToggle();
+    
+    // Set current year in footer
+    const currentYearElement = document.getElementById('currentYear');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
+});
+
+// News Marquee Functionality
+function initNewsMarquee() {
+    const marqueeItems = document.querySelector('.marquee-items');
+    if (marqueeItems) {
+        // Clone marquee items for continuous scrolling
+        const items = marqueeItems.innerHTML;
+        marqueeItems.innerHTML = items + items;
+
+        // Add hover pause functionality
+        marqueeItems.addEventListener('mouseenter', () => {
+            marqueeItems.style.animationPlayState = 'paused';
+        });
+
+        marqueeItems.addEventListener('mouseleave', () => {
+            marqueeItems.style.animationPlayState = 'running';
+        });
+    }
+
+    // Hide marquee after 20 seconds
+    const newsMarquee = document.querySelector('.news-marquee');
+    if (newsMarquee) {
+        setTimeout(() => {
+            newsMarquee.classList.add('hidden');
+        }, 20000);
+    }
+}
+
+// Theme Toggle Functionality
+function initThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.classList.replace('fa-sun-haze', 'fa-moon-stars');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        if (newTheme === 'dark') {
+            themeIcon.classList.replace('fa-sun-haze', 'fa-moon-stars');
+        } else {
+            themeIcon.classList.replace('fa-moon-stars', 'fa-sun-haze');
+        }
+    });
+}
+
+// Mobile Menu Functionality
+function initMobileMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('nav a');
+    let isMenuOpen = false;
+
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            nav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            
+            // Toggle aria-expanded attribute
+            menuToggle.setAttribute('aria-expanded', isMenuOpen);
+            
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (isMenuOpen && !nav.contains(e.target) && !menuToggle.contains(e.target)) {
+                isMenuOpen = false;
+                nav.classList.remove('active');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) {
+                    isMenuOpen = false;
+                    nav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && isMenuOpen) {
+                isMenuOpen = false;
+                nav.classList.remove('active');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+}

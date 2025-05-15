@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - CDI</title>
+    <title>Media - CDI</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/TwjV9XYv/cdilogo-color.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Add mobile-menu.js before main.js -->
+    <script src="js/mobile-menu.js"></script>
     <style>
         .media-hero {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80');
@@ -85,6 +88,241 @@
             max-width: 800px;
             margin: 0 auto 40px;
         }
+
+        /* Add marquee styles */
+        .news-marquee {
+            background-color: var(--secondary-color);
+            padding: 10px 0;
+            overflow: hidden;
+            position: sticky;
+            top: 80px; /* Adjust based on your header height */
+            z-index: 100;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .news-marquee.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee-content {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            width: 100%;
+        }
+
+        .marquee-label {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            font-weight: 600;
+            padding: 5px 20px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            border-radius: 4px;
+            margin-right: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .marquee-items {
+            display: inline-flex;
+            animation: marquee 45s linear infinite;
+            white-space: nowrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .marquee-items span {
+            color: var(--primary-color);
+            padding: 0 30px;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .marquee-items:hover {
+            animation-play-state: paused;
+        }
+
+        .section-selectors {
+            background-color: var(--secondary-color);
+            padding: 20px 0;
+            position: sticky;
+            top: 130px;
+            z-index: 99;
+        }
+
+        .selector-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .selector-btn {
+            padding: 10px 30px;
+            border-radius: 25px;
+            background-color: transparent;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .selector-btn.active,
+        .selector-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        .news-section {
+            padding: 60px 0;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .news-item {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .news-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .news-category {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .news-content h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .news-content p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--primary-color-dark);
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .navbar {
+                position: fixed;
+                top: 80px; /* Header height */
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--bg-color);
+                padding: 2rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 999;
+            }
+
+            .navbar.active {
+                transform: translateX(0);
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .navbar ul li {
+                width: 100%;
+            }
+
+            .navbar ul li a {
+                display: block;
+                padding: 1rem;
+                font-size: 1.2rem;
+            }
+
+            .mobile-menu-btn.active i {
+                transform: rotate(90deg);
+            }
+
+            .mobile-menu-btn i {
+                transition: transform 0.3s ease;
+            }
+        }
     </style>
 </head>
 <body>
@@ -93,7 +331,8 @@
         <div class="container">
             <div class="logo" data-aos="fade-right">
                 <a href="index.html">
-                    <h1>CDI<span>.</span></h1>
+                    <img src="https://i.postimg.cc/sgS6pwGF/cdilogo-color.png" alt="CDI Logo" class="logo-img">
+                    <h1>Corporate Development <span> Institute</span></h1>
                 </a>
             </div>
             <nav class="navbar" data-aos="fade-left">
@@ -102,7 +341,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="team.html">Team</a></li>
                     <li><a href="courses.html">Courses</a></li>
-                    <li><a href="media.html" class="active">Gallery</a></li>
+                    <li><a href="media.html" class="active">Media</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -115,18 +354,95 @@
         </div>
     </header>
 
+    <!-- News Marquee -->
+    <div class="news-marquee">
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <span class="marquee-label">Latest Updates:</span>
+                <div class="marquee-items">
+                    <span>🎓 New Certification Program Launched - Enroll Now!</span>
+                    <span>📅 Upcoming Workshop: Digital Marketing Essentials - Register Today</span>
+                    <span>🏆 Congratulations to Our Latest Graduates!</span>
+                    <span>🌟 Special Offer: 20% Off on All Business Courses</span>
+                    <span>📢 New Partnership with Industry Leaders Announced</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Media Hero Section -->
     <section class="media-hero">
         <div class="container">
-            <h1 data-aos="fade-up">Our Gallery</h1>
-            <p data-aos="fade-up" data-aos-delay="100">Explore our collection of photos and videos showcasing our journey and achievements</p>
+            <h1 data-aos="fade-up">Media Center</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Stay updated with our latest news, photos, and videos</p>
+        </div>
+    </section>
+
+    <!-- Section Selectors -->
+    <section class="section-selectors">
+        <div class="container">
+            <div class="selector-buttons" data-aos="fade-up">
+                <a href="#news" class="selector-btn active">News</a>
+                <a href="#photos" class="selector-btn">Photos</a>
+                <a href="#videos" class="selector-btn">Videos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="news-section section-padding">
+        <div class="container">
+            <div class="news-grid">
+                <div class="news-item" data-aos="fade-up">
+                    <div class="news-image">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="News Image">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-date">June 15, 2024</span>
+                            <span class="news-category">Announcement</span>
+                        </div>
+                        <h3>New Certification Program Launched</h3>
+                        <p>We are excited to announce the launch of our new professional certification program in Digital Marketing...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                <div class="news-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="news-image">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="News Image">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-date">June 10, 2024</span>
+                            <span class="news-category">Event</span>
+                        </div>
+                        <h3>Annual Graduation Ceremony Success</h3>
+                        <p>Our annual graduation ceremony was a resounding success, with over 200 students receiving their certificates...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                <div class="news-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="news-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="News Image">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-date">June 5, 2024</span>
+                            <span class="news-category">Partnership</span>
+                        </div>
+                        <h3>New Industry Partnership Announced</h3>
+                        <p>We are proud to announce our new partnership with leading tech companies to enhance our training programs...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Photo Gallery Section -->
     <section class="media-section">
         <div class="container">
-            <div class="media-category" data-aos="fade-up">
+            <div class="media-category" id="photos" data-aos="fade-up">
                 <h2>Photo Gallery</h2>
                 <p>Capturing moments of learning, growth, and success at CDI</p>
                 <div class="media-grid">
@@ -166,7 +482,7 @@
     <!-- Video Gallery Section -->
     <section class="media-section" style="background-color: #f9f9f9;">
         <div class="container">
-            <div class="media-category" data-aos="fade-up">
+            <div class="media-category" id="videos" data-aos="fade-up">
                 <h2>Video Gallery</h2>
                 <p>Watch our training sessions, testimonials, and success stories</p>
                 <div class="media-grid">
@@ -220,7 +536,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about" data-aos="fade-up">
-                    <h3>CDI</h3>
+                    <img src="https://i.postimg.cc/hjCpSY6m/cdilogow.png" alt="CDI Logo" style="width: 120px; margin-bottom: 15px;">
+                    <h3>Corporate Development Institute - CDI</h3>
                     <p>Empowering individuals and organizations through quality education and training.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -318,6 +635,45 @@
             } else {
                 themeIcon.classList.replace('fa-moon-stars', 'fa-sun-haze');
             }
+        });
+
+        // Add marquee script
+        document.addEventListener('DOMContentLoaded', function() {
+            const marqueeItems = document.querySelector('.marquee-items');
+            if (marqueeItems) {
+                const items = marqueeItems.innerHTML;
+                marqueeItems.innerHTML = items + items;
+            }
+
+            // Hide marquee after 20 seconds
+            const newsMarquee = document.querySelector('.news-marquee');
+            if (newsMarquee) {
+                setTimeout(() => {
+                    newsMarquee.classList.add('hidden');
+                }, 20000);
+            }
+        });
+
+        // Section selector functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectorBtns = document.querySelectorAll('.selector-btn');
+            
+            selectorBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all buttons
+                    selectorBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Scroll to section
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
         });
     </script>
 </body>

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Corporate Development Institute</title>
+    <title>About - CDI</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/TwjV9XYv/cdilogo-color.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -16,7 +17,8 @@
         <div class="container">
             <div class="logo" data-aos="fade-right">
                 <a href="index.html">
-                    <h1>CDI<span>.</span></h1>
+                    <img src="https://i.postimg.cc/sgS6pwGF/cdilogo-color.png" alt="CDI Logo" class="logo-img">
+                    <h1>Corporate Development <span> Institute</span></h1>
                 </a>
             </div>
             <nav class="navbar" data-aos="fade-left">
@@ -25,7 +27,7 @@
                     <li><a href="about.html" class="active">About</a></li>
                     <li><a href="team.html">Team</a></li>
                     <li><a href="courses.html">Courses</a></li>
-                    <li><a href="media.html">Gallery</a></li>
+                    <li><a href="media.html">Media</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -37,6 +39,22 @@
             </div>
         </div>
     </header>
+
+    <!-- News Marquee -->
+    <div class="news-marquee">
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <span class="marquee-label">Latest Updates:</span>
+                <div class="marquee-items">
+                    <span>🎓 New Certification Program Launched - Enroll Now!</span>
+                    <span>📅 Upcoming Workshop: Digital Marketing Essentials - Register Today</span>
+                    <span>🏆 Congratulations to Our Latest Graduates!</span>
+                    <span>🌟 Special Offer: 20% Off on All Business Courses</span>
+                    <span>📢 New Partnership with Industry Leaders Announced</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- About Hero -->
     <section class="about-hero">
@@ -107,7 +125,6 @@
                     <h3>Innovation</h3>
                     <p>We continuously innovate to provide cutting-edge learning solutions.</p>
                 </div>
-                
             </div>
         </div>
     </section>
@@ -123,19 +140,19 @@
                 </div>
                 <div class="story-stats">
                     <div class="stat-item">
-                        <h3><span class="counter" data-target="2">0</span>+</h3>
+                        <h3>2+</h3>
                         <p>Years of Excellence</p>
                     </div>
                     <div class="stat-item">
-                        <h3><span class="counter" data-target="100">0</span>+</h3>
+                        <h3>100+</h3>
                         <p>Professionals Trained</p>
                     </div>
                     <div class="stat-item">
-                        <h3><span class="counter" data-target="12">0</span>+</h3>
+                        <h3>12+</h3>
                         <p>Expert Instructors</p>
                     </div>
                     <div class="stat-item">
-                        <h3><span class="counter" data-target="95">0</span>%</h3>
+                        <h3>95%</h3>
                         <p>Client Satisfaction</p>
                     </div>
                 </div>
@@ -179,8 +196,9 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-about">
-                    <h3>Corporate Development Institute</h3>
+                <div class="footer-about" data-aos="fade-up">
+                    <img src="https://i.postimg.cc/hjCpSY6m/cdilogow.png" alt="CDI Logo" style="width: 120px; margin-bottom: 15px;">
+                    <h3>Corporate Development Institute - CDI</h3>
                     <p>Providing high-quality professional training to help individuals and organizations achieve their full potential.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -194,161 +212,40 @@
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About</a></li>
-                        <li><a href="media.html">Gallery</a></li>
                         <li><a href="team.html">Team</a></li>
-                        <li><a href="/index.html/#contact">Contact</a></li>
                         <li><a href="courses.html">Courses</a></li>
+                        <li><a href="media.html">Media</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-newsletter">
                     <h3>Newsletter</h3>
-                    <p>Subscribe to our newsletter for the latest updates and course offerings.</p>
+                    <p>Subscribe to our newsletter for updates and exclusive offers.</p>
                     <form id="newsletterForm">
                         <input type="email" placeholder="Your Email" required>
-                        <button type="submit" class="btn-secondary">Subscribe</button>
+                        <button type="submit">Subscribe</button>
                     </form>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> Corporate Development Institute. All Rights Reserved.</p>
+                <p>&copy; <span id="currentYear"></span> Corporate Development Institute. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <a href="#" class="back-to-top" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
-    </button>
+    </a>
 
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Login to Your Account</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <input type="email" id="loginEmail" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" id="loginPassword" placeholder="Password" required>
-                </div>
-                <button type="submit" class="btn-primary">Login</button>
-                <p>Don't have an account? <a href="#" id="showRegister">Register here</a></p>
-            </form>
-            
-            <form id="registerForm" style="display: none;">
-                <h2>Create an Account</h2>
-                <div class="form-group">
-                    <input type="text" id="registerName" placeholder="Full Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="registerEmail" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" id="registerPassword" placeholder="Password" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" id="registerConfirm" placeholder="Confirm Password" required>
-                </div>
-                <button type="submit" class="btn-primary">Register</button>
-                <p>Already have an account? <a href="#" id="showLogin">Login here</a></p>
-            </form>
-        </div>
-    </div>
-
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/mobile-menu.js"></script>
     <script src="js/main.js"></script>
     <script>
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Back to Top Button Functionality
-        const backToTopButton = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Counter animation
-        const counters = document.querySelectorAll('.counter');
-        const speed = 200; // The lower the faster
-
-        const startCounting = (counter) => {
-            const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText;
-            const increment = target / speed;
-
-            if (count < target) {
-                counter.innerText = Math.ceil(count + increment);
-                setTimeout(() => startCounting(counter), 1);
-            } else {
-                counter.innerText = target;
-            }
-        };
-
-        // Start counting when element is in viewport
-        const observerOptions = {
-            threshold: 0.5
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    startCounting(entry.target);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        counters.forEach(counter => {
-            observer.observe(counter);
-        });
-    </script>
-
-    <!-- AOS JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Initialize AOS
         AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            mirror: false
-        });
-        
-        // Theme Toggle Functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-        
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeIcon.classList.replace('fa-sun-haze', 'fa-moon-stars');
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            if (newTheme === 'dark') {
-                themeIcon.classList.replace('fa-sun-haze', 'fa-moon-stars');
-            } else {
-                themeIcon.classList.replace('fa-moon-stars', 'fa-sun-haze');
-            }
+            duration: 1000,
+            once: true
         });
     </script>
 </body>
