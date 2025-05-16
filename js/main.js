@@ -640,26 +640,6 @@ function initHeroCarousel() {
     }
 }
 
-// Initialize all components when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    initMobileMenu();
-    initSmoothScroll();
-    initLoginModal();
-    initContactForm();
-    initNewsletterForm();
-    initStickyHeader();
-    initNavbarScroll();
-    initHeroCarousel();
-    initNewsMarquee();
-    initThemeToggle();
-    
-    // Set current year in footer
-    const currentYearElement = document.getElementById('currentYear');
-    if (currentYearElement) {
-        currentYearElement.textContent = new Date().getFullYear();
-    }
-});
-
 // News Marquee Functionality
 function initNewsMarquee() {
     const marqueeItems = document.querySelector('.marquee-items');
@@ -762,3 +742,94 @@ function initMobileMenu() {
         });
     }
 }
+
+// News Card Expansion Functionality
+function initNewsCards() {
+    const readMoreButtons = document.querySelectorAll('.read-more');
+    const expandedNews = document.querySelector('.expanded-news');
+    const closeButton = document.querySelector('.close-expanded-news');
+
+    readMoreButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const newsCard = button.closest('.news-card');
+            const newsData = {
+                title: newsCard.querySelector('h3').textContent,
+                image: newsCard.querySelector('.news-image img').src,
+                date: newsCard.querySelector('.news-meta span:first-child').textContent,
+                author: newsCard.querySelector('.news-meta span:last-child').textContent,
+                excerpt: newsCard.querySelector('.news-excerpt').textContent,
+                fullContent: newsCard.dataset.fullContent || newsCard.querySelector('.news-excerpt').textContent
+            };
+
+            // Update expanded news content
+            const expandedContent = expandedNews.querySelector('.expanded-news-content');
+            expandedContent.innerHTML = `
+                <button class="close-expanded-news" aria-label="Close expanded news">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="expanded-news-header">
+                    <img src="${newsData.image}" alt="${newsData.title}">
+                    <div class="expanded-news-title">
+                        <h2>${newsData.title}</h2>
+                        <div class="expanded-news-meta">
+                            <span><i class="far fa-calendar"></i> ${newsData.date}</span>
+                            <span><i class="far fa-user"></i> ${newsData.author}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="expanded-news-body">
+                    ${newsData.fullContent}
+                </div>
+            `;
+
+            // Show expanded news
+            expandedNews.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Add event listener to new close button
+            const newCloseButton = expandedContent.querySelector('.close-expanded-news');
+            newCloseButton.addEventListener('click', closeExpandedNews);
+        });
+    });
+
+    // Close expanded news when clicking outside
+    expandedNews.addEventListener('click', (e) => {
+        if (e.target === expandedNews) {
+            closeExpandedNews();
+        }
+    });
+
+    // Close expanded news when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && expandedNews.classList.contains('active')) {
+            closeExpandedNews();
+        }
+    });
+
+    function closeExpandedNews() {
+        expandedNews.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Initialize all components when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initMobileMenu();
+    initSmoothScroll();
+    initLoginModal();
+    initContactForm();
+    initNewsletterForm();
+    initStickyHeader();
+    initNavbarScroll();
+    initHeroCarousel();
+    initNewsMarquee();
+    initThemeToggle();
+    initNewsCards();
+    
+    // Set current year in footer
+    const currentYearElement = document.getElementById('currentYear');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
+});

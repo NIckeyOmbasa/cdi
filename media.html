@@ -255,15 +255,23 @@
         }
 
         .read-more {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
             display: inline-block;
-            transition: color 0.3s ease;
+            padding: 6px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            background-color: var(--primary-color);
+            color: var(--white);
         }
 
         .read-more:hover {
-            color: var(--primary-color-dark);
+            background-color: var(--white);
+            transform: translateY(-2px);
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
         }
 
         /* Mobile Menu Styles */
@@ -332,7 +340,7 @@
             <div class="logo" data-aos="fade-right">
                 <a href="index.html">
                     <img src="https://i.postimg.cc/sgS6pwGF/cdilogo-color.png" alt="CDI Logo" class="logo-img">
-                    <h1>Corporate Development <span> Institute</span></h1>
+                    <h1>Corporate Development <span> Institute</span>.</h1>
                 </a>
             </div>
             <nav class="navbar" data-aos="fade-left">
@@ -382,7 +390,7 @@
     <section class="section-selectors">
         <div class="container">
             <div class="selector-buttons" data-aos="fade-up">
-                <a href="#news" class="selector-btn active">News</a>
+                <a href="#news" class="selector-btn active"> Latest News</a>
                 <a href="#photos" class="selector-btn">Photos</a>
                 <a href="#videos" class="selector-btn">Videos</a>
             </div>
@@ -390,54 +398,35 @@
     </section>
 
     <!-- News Section -->
-    <section id="news" class="news-section section-padding">
+    <section class="news-section section-padding">
         <div class="container">
+            <div class="news-header">
+                <h2>Latest News</h2>
+                <p>Stay updated with our latest news and announcements</p>
+            </div>
             <div class="news-grid">
-                <div class="news-item" data-aos="fade-up">
-                    <div class="news-image">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="News Image">
-                    </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span class="news-date">June 15, 2024</span>
-                            <span class="news-category">Announcement</span>
-                        </div>
-                        <h3>New Certification Program Launched</h3>
-                        <p>We are excited to announce the launch of our new professional certification program in Digital Marketing...</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
+                <!-- News cards will be dynamically displayed here -->
+            </div>
+            <div class="news-pagination">
+                <button class="pagination-btn prev" disabled>
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <div class="pagination-numbers">
+                    <!-- Page numbers will be dynamically inserted here -->
                 </div>
-                <div class="news-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="news-image">
-                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="News Image">
-                    </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span class="news-date">June 10, 2024</span>
-                            <span class="news-category">Event</span>
-                        </div>
-                        <h3>Annual Graduation Ceremony Success</h3>
-                        <p>Our annual graduation ceremony was a resounding success, with over 200 students receiving their certificates...</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-                <div class="news-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="news-image">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="News Image">
-                    </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span class="news-date">June 5, 2024</span>
-                            <span class="news-category">Partnership</span>
-                        </div>
-                        <h3>New Industry Partnership Announced</h3>
-                        <p>We are proud to announce our new partnership with leading tech companies to enhance our training programs...</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
+                <button class="pagination-btn next">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
+
+    <!-- Expanded News Overlay -->
+    <div class="expanded-news">
+        <div class="expanded-news-content">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+    </div>
 
     <!-- Photo Gallery Section -->
     <section class="media-section">
@@ -551,10 +540,10 @@
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About</a></li>
-                        <li><a href="media.html">Gallery</a></li>
                         <li><a href="team.html">Team</a></li>
-                        <li><a href="contact.html">Contact</a></li>
                         <li><a href="courses.html">Courses</a></li>
+                        <li><a href="media.html">Media</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                         
                     </ul>
                 </div>
@@ -593,6 +582,247 @@
         
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // News Pagination
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsGrid = document.querySelector('.news-grid');
+            const paginationNumbers = document.querySelector('.pagination-numbers');
+            const prevButton = document.querySelector('.pagination-btn.prev');
+            const nextButton = document.querySelector('.pagination-btn.next');
+            const cardsPerPage = 6;
+            let currentPage = 1;
+
+            // Sample news data - replace this with your actual news data
+            const newsData = [
+                {
+                    title: "New Certification Program Launched",
+                    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
+                    date: "March 15, 2024",
+                    author: "Admin",
+                    excerpt: "We are excited to announce the launch of our new certification program in Digital Marketing. This comprehensive program covers all aspects of modern digital marketing strategies."
+                },
+                {
+                    title: "CDI Accredited by NITA",
+                    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80",
+                    date: "March 10, 2024",
+                    author: "Admin",
+                    excerpt: "We are thrilled to announce a major milestone in our journey of excellence—our official registration with the National Industrial Training Authority (NITA) Kenya! This achievement marks a new era for our training institute, solidifying our commitment to providing top-tier, industry-recognized programs that empower individuals and businesses with cutting-edge skills. As a NITA-accredited institution, we are now positioned to offer certified courses that meet the highest standards of professional development, ensuring our students receive training that is both credible and impactful.<br>This accreditation is not just a recognition; it is a testament to our dedication to quality education and skill development. Our expert trainers, well-structured curricula, and hands-on learning approach will continue to shape the futures of countless professionals across various industries. With this registration, we are able to offer our learners the opportunity to access training that is not only compliant with industry regulations but also eligible for employer training reimbursements under NITA guidelines. This means more accessible, affordable, and high-quality education for all! <br>We extend our deepest gratitude to our staff, students, and stakeholders who have supported us on this journey. Your trust and commitment have been the driving force behind our success, and we are excited for what lies ahead. We invite you to join us in celebrating this achievement and to explore the new possibilities that come with our NITA-approved courses. Together, we will continue to shape a skilled and empowered workforce for Kenya’s future. Stay tuned for exciting programs, workshops, and training opportunities that will take your career to the next level!"
+                },
+                {
+                    title: "New Partnership Announcement",
+                    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80",
+                    date: "March 5, 2024",
+                    author: "Admin",
+                    excerpt: "We are proud to announce our new partnership with leading industry players to enhance our training programs and provide better opportunities for our students."
+                },
+                {
+                    title: "Student Success Story",
+                    image: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=600&q=80",
+                    date: "March 1, 2024",
+                    author: "Admin",
+                    excerpt: "Read about how our Data Analysis course helped John Doe secure a position at a leading tech company. His journey from student to professional is truly inspiring."
+                },
+                {
+                    title: "Upcoming Workshop",
+                    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
+                    date: "February 28, 2024",
+                    author: "Admin",
+                    excerpt: "Join our upcoming workshop on Project Management Fundamentals. Learn essential skills from industry experts and enhance your career prospects."
+                },
+                {
+                    title: "New Course Launch",
+                    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80",
+                    date: "February 25, 2024",
+                    author: "Admin",
+                    excerpt: "We are launching a new course in Business Analytics. This course will equip students with the skills needed to analyze and interpret business data effectively."
+                },
+                {
+                    title: "Alumni Meetup",
+                    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80",
+                    date: "February 20, 2024",
+                    author: "Admin",
+                    excerpt: "Our annual alumni meetup was a great success! Graduates from various programs came together to share their experiences and network with industry professionals."
+                },
+                {
+                    title: "Faculty Development Program",
+                    image: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=600&q=80",
+                    date: "February 15, 2024",
+                    author: "Admin",
+                    excerpt: "Our faculty members recently completed an intensive development program to enhance their teaching methodologies and stay updated with industry trends."
+                }
+            ];
+
+            // Function to create news cards
+            function createNewsCards() {
+                newsGrid.innerHTML = ''; // Clear existing cards
+                const start = (currentPage - 1) * cardsPerPage;
+                const end = start + cardsPerPage;
+                const currentPageCards = newsData.slice(start, end);
+
+                currentPageCards.forEach(news => {
+                    const card = document.createElement('div');
+                    card.className = 'news-card';
+                    card.innerHTML = `
+                        <div class="news-image">
+                            <img src="${news.image}" alt="${news.title}">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span><i class="far fa-calendar"></i> ${news.date}</span>
+                                <span><i class="far fa-user"></i> ${news.author}</span>
+                            </div>
+                            <h3>${news.title}</h3>
+                            <p class="news-excerpt">${news.excerpt}</p>
+                            <button class="read-more">Read More</button>
+                        </div>
+                    `;
+                    newsGrid.appendChild(card);
+                });
+
+                // Reinitialize read more buttons for new cards
+                initReadMoreButtons();
+            }
+
+            // Function to update pagination
+            function updatePagination() {
+                const totalPages = Math.ceil(newsData.length / cardsPerPage);
+                paginationNumbers.innerHTML = '';
+                
+                // Previous button state
+                prevButton.disabled = currentPage === 1;
+                
+                // Next button state
+                nextButton.disabled = currentPage === totalPages;
+
+                // Always show first page
+                addPageNumber(1);
+                
+                if (currentPage > 3) {
+                    paginationNumbers.innerHTML += '<span class="pagination-ellipsis">...</span>';
+                }
+                
+                // Show pages around current page
+                for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+                    addPageNumber(i);
+                }
+                
+                if (currentPage < totalPages - 2) {
+                    paginationNumbers.innerHTML += '<span class="pagination-ellipsis">...</span>';
+                }
+                
+                // Always show last page if there's more than one page
+                if (totalPages > 1) {
+                    addPageNumber(totalPages);
+                }
+            }
+
+            // Function to add page number button
+            function addPageNumber(pageNum) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = pageNum;
+                pageButton.classList.add('pagination-number');
+                if (pageNum === currentPage) {
+                    pageButton.classList.add('active');
+                }
+                pageButton.addEventListener('click', () => {
+                    currentPage = pageNum;
+                    createNewsCards();
+                    updatePagination();
+                });
+                paginationNumbers.appendChild(pageButton);
+            }
+
+            // Event listeners for pagination buttons
+            prevButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    createNewsCards();
+                    updatePagination();
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                const totalPages = Math.ceil(newsData.length / cardsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    createNewsCards();
+                    updatePagination();
+                }
+            });
+
+            // Function to initialize read more buttons
+            function initReadMoreButtons() {
+                const readMoreButtons = document.querySelectorAll('.read-more');
+                const expandedNews = document.querySelector('.expanded-news');
+
+                readMoreButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const newsCard = button.closest('.news-card');
+                        const newsData = {
+                            title: newsCard.querySelector('h3').textContent,
+                            image: newsCard.querySelector('.news-image img').src,
+                            date: newsCard.querySelector('.news-meta span:first-child').textContent,
+                            author: newsCard.querySelector('.news-meta span:last-child').textContent,
+                            excerpt: newsCard.querySelector('.news-excerpt').textContent
+                        };
+
+                        // Update expanded news content
+                        const expandedContent = expandedNews.querySelector('.expanded-news-content');
+                        expandedContent.innerHTML = `
+                            <button class="close-expanded-news" aria-label="Close expanded news">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <div class="expanded-news-header">
+                                <img src="${newsData.image}" alt="${newsData.title}">
+                                <div class="expanded-news-title">
+                                    <h2>${newsData.title}</h2>
+                                    <div class="expanded-news-meta">
+                                        <span><i class="far fa-calendar"></i> ${newsData.date}</span>
+                                        <span><i class="far fa-user"></i> ${newsData.author}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="expanded-news-body">
+                                <p>${newsData.excerpt}</p>
+                            </div>
+                        `;
+
+                        // Show expanded news
+                        expandedNews.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+
+                        // Add event listener to new close button
+                        const closeButton = expandedContent.querySelector('.close-expanded-news');
+                        closeButton.addEventListener('click', closeExpandedNews);
+                    });
+                });
+            }
+
+            // Function to close expanded news
+            function closeExpandedNews() {
+                const expandedNews = document.querySelector('.expanded-news');
+                expandedNews.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // Close expanded news when clicking outside
+            document.querySelector('.expanded-news').addEventListener('click', (e) => {
+                if (e.target === e.currentTarget) {
+                    closeExpandedNews();
+                }
+            });
+
+            // Close expanded news when pressing Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && document.querySelector('.expanded-news').classList.contains('active')) {
+                    closeExpandedNews();
+                }
+            });
+
+            // Initial setup
+            createNewsCards();
+            updatePagination();
+        });
 
         // Back to Top Button Functionality
         const backToTopButton = document.getElementById('backToTop');
@@ -651,6 +881,73 @@
                 setTimeout(() => {
                     newsMarquee.classList.add('hidden');
                 }, 20000);
+            }
+
+            // News Card Expansion Functionality
+            const readMoreButtons = document.querySelectorAll('.read-more');
+            const expandedNews = document.querySelector('.expanded-news');
+
+            readMoreButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const newsCard = button.closest('.news-card');
+                    const newsData = {
+                        title: newsCard.querySelector('h3').textContent,
+                        image: newsCard.querySelector('.news-image img').src,
+                        date: newsCard.querySelector('.news-meta span:first-child').textContent,
+                        author: newsCard.querySelector('.news-meta span:last-child').textContent,
+                        excerpt: newsCard.querySelector('.news-excerpt').textContent // Use the same content for full view
+                    };
+
+                    // Update expanded news content
+                    const expandedContent = expandedNews.querySelector('.expanded-news-content');
+                    expandedContent.innerHTML = `
+                        <button class="close-expanded-news" aria-label="Close expanded news">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <div class="expanded-news-header">
+                            <img src="${newsData.image}" alt="${newsData.title}">
+                            <div class="expanded-news-title">
+                                <h2>${newsData.title}</h2>
+                                <div class="expanded-news-meta">
+                                    <span><i class="far fa-calendar"></i> ${newsData.date}</span>
+                                    <span><i class="far fa-user"></i> ${newsData.author}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="expanded-news-body">
+                            ${newsData.fullContent.split('<br>').map(paragraph => 
+                                paragraph.trim() ? `<p>${paragraph.trim()}</p>` : ''
+                            ).join('')}
+                        </div>
+                    `;
+
+                    // Show expanded news
+                    expandedNews.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+
+                    // Add event listener to new close button
+                    const closeButton = expandedContent.querySelector('.close-expanded-news');
+                    closeButton.addEventListener('click', closeExpandedNews);
+                });
+            });
+
+            // Close expanded news when clicking outside
+            expandedNews.addEventListener('click', (e) => {
+                if (e.target === expandedNews) {
+                    closeExpandedNews();
+                }
+            });
+
+            // Close expanded news when pressing Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && expandedNews.classList.contains('active')) {
+                    closeExpandedNews();
+                }
+            });
+
+            function closeExpandedNews() {
+                expandedNews.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
 
