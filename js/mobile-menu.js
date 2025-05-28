@@ -16,21 +16,21 @@ function initMobileMenu() {
         function closeMenu() {
             navbar.classList.remove('active');
             mobileMenuBtn.classList.remove('active');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
+            isMenuOpen = false;
+            document.body.style.overflow = '';
         }
 
         // Function to open menu
         function openMenu() {
             navbar.classList.add('active');
             mobileMenuBtn.classList.add('active');
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
+            isMenuOpen = true;
+            document.body.style.overflow = 'hidden';
         }
 
         // Toggle menu on button click
         mobileMenuBtn.addEventListener('click', function() {
-            if (navbar.classList.contains('active')) {
+            if (isMenuOpen) {
                 closeMenu();
             } else {
                 openMenu();
@@ -39,7 +39,7 @@ function initMobileMenu() {
 
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
-            if (!navbar.contains(e.target) && !mobileMenuBtn.contains(e.target) && navbar.classList.contains('active')) {
+            if (isMenuOpen && !navbar.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
                 closeMenu();
             }
         });
@@ -52,7 +52,7 @@ function initMobileMenu() {
 
         // Handle window resize
         window.addEventListener('resize', function() {
-            if (window.innerWidth > 768 && navbar.classList.contains('active')) {
+            if (window.innerWidth > 768 && isMenuOpen) {
                 closeMenu();
             }
         });
@@ -61,13 +61,15 @@ function initMobileMenu() {
         mobileMenuBtn.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                openMenu();
+                if (!isMenuOpen) {
+                    openMenu();
+                }
             }
         });
 
         // Add escape key support
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && navbar.classList.contains('active')) {
+            if (e.key === 'Escape' && isMenuOpen) {
                 closeMenu();
             }
         });

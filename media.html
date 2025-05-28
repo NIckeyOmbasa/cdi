@@ -10,328 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Add mobile-menu.js before main.js -->
+    <!-- Scripts -->
     <script src="js/mobile-menu.js"></script>
-    <style>
-        .media-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 100px 0;
-        }
-
-        .media-section {
-            padding: 80px 0;
-        }
-
-        .media-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .media-item {
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .media-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .media-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .media-item video {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .media-info {
-            padding: 20px;
-        }
-
-        .media-info h3 {
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .media-info p {
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .media-category {
-            margin-bottom: 40px;
-        }
-
-        .media-category h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .media-category p {
-            text-align: center;
-            color: #666;
-            max-width: 800px;
-            margin: 0 auto 40px;
-        }
-
-        /* Add marquee styles */
-        .news-marquee {
-            background-color: var(--secondary-color);
-            padding: 10px 0;
-            overflow: hidden;
-            position: sticky;
-            top: 80px; /* Adjust based on your header height */
-            z-index: 100;
-            width: 100%;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-
-        .news-marquee.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .marquee-container {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .marquee-content {
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-            width: 100%;
-        }
-
-        .marquee-label {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            font-weight: 600;
-            padding: 5px 20px;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-            border-radius: 4px;
-            margin-right: 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .marquee-items {
-            display: inline-flex;
-            animation: marquee 45s linear infinite;
-            white-space: nowrap;
-            position: relative;
-            z-index: 1;
-        }
-
-        .marquee-items span {
-            color: var(--primary-color);
-            padding: 0 30px;
-            font-size: 1rem;
-            white-space: nowrap;
-        }
-
-        @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        .marquee-items:hover {
-            animation-play-state: paused;
-        }
-
-        .section-selectors {
-            background-color: var(--secondary-color);
-            padding: 20px 0;
-            position: sticky;
-            top: 130px;
-            z-index: 99;
-        }
-
-        .selector-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .selector-btn {
-            padding: 10px 30px;
-            border-radius: 25px;
-            background-color: transparent;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .selector-btn.active,
-        .selector-btn:hover {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-        }
-
-        .news-section {
-            padding: 60px 0;
-        }
-
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .news-item {
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .news-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .news-image {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .news-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .news-content {
-            padding: 20px;
-        }
-
-        .news-meta {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .news-category {
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-
-        .news-content h3 {
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .news-content p {
-            color: #666;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        .read-more {
-            display: inline-block;
-            padding: 6px 20px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
-        .read-more:hover {
-            background-color: var(--white);
-            transform: translateY(-2px);
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-        }
-
-        /* Mobile Menu Styles */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1000;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .navbar {
-                position: fixed;
-                top: 80px; /* Header height */
-                left: 0;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: var(--bg-color);
-                padding: 2rem;
-                transform: translateX(-100%);
-                transition: transform 0.3s ease-in-out;
-                z-index: 999;
-            }
-
-            .navbar.active {
-                transform: translateX(0);
-            }
-
-            .navbar ul {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-
-            .navbar ul li {
-                width: 100%;
-            }
-
-            .navbar ul li a {
-                display: block;
-                padding: 1rem;
-                font-size: 1.2rem;
-            }
-
-            .mobile-menu-btn.active i {
-                transform: rotate(90deg);
-            }
-
-            .mobile-menu-btn i {
-                transition: transform 0.3s ease;
-            }
-        }
-    </style>
+    <script src="js/marquee.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -364,18 +45,8 @@
 
     <!-- News Marquee -->
     <div class="news-marquee">
-        <div class="marquee-container">
-            <div class="marquee-content">
-                <span class="marquee-label">Latest Updates:</span>
-                <div class="marquee-items">
-                    <span>🎓 New Certification Program Launched - Enroll Now!</span>
-                    <span>📅 Upcoming Workshop: Digital Marketing Essentials - Register Today</span>
-                    <span>🏆 Congratulations to Our Latest Graduates!</span>
-                    <span>🌟 Special Offer: 20% Off on All Business Courses</span>
-                    <span>📢 New Partnership with Industry Leaders Announced</span>
-                </div>
-            </div>
-        </div>
+        <div class="marquee-label">Latest News</div>
+        <div class="marquee-content"></div>
     </div>
 
     <!-- Media Hero Section -->
@@ -398,7 +69,7 @@
     </section>
 
     <!-- News Section -->
-    <section class="news-section section-padding">
+    <section class="news-section section-padding" id="news">
         <div class="container">
             <div class="news-header">
                 <h2>Latest News</h2>
@@ -429,9 +100,9 @@
     </div>
 
     <!-- Photo Gallery Section -->
-    <section class="media-section">
+    <section class="media-section" id="photos">
         <div class="container">
-            <div class="media-category" id="photos" data-aos="fade-up">
+            <div class="media-category"  data-aos="fade-up">
                 <h2>Photo Gallery</h2>
                 <p>Capturing moments of learning, growth, and success at CDI</p>
                 <div class="media-grid">
@@ -469,15 +140,15 @@
     </section>
 
     <!-- Video Gallery Section -->
-    <section class="media-section" style="background-color: #f9f9f9;">
+    <section class="media-section" style="background-color: #f9f9f9;" id="videos">
         <div class="container">
-            <div class="media-category" id="videos" data-aos="fade-up">
+            <div class="media-category"  data-aos="fade-up">
                 <h2>Video Gallery</h2>
                 <p>Watch our training sessions, testimonials, and success stories</p>
                 <div class="media-grid">
                     <div class="media-item" data-aos="fade-up">
                         <video controls poster="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80">
-                            <source src="videos/training-session.mp4" type="video/mp4">
+                            <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                         <div class="media-info">
@@ -487,7 +158,7 @@
                     </div>
                     <div class="media-item" data-aos="fade-up" data-aos-delay="100">
                         <video controls poster="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80">
-                            <source src="videos/testimonial.mp4" type="video/mp4">
+                            <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                         <div class="media-info">
@@ -497,7 +168,7 @@
                     </div>
                     <div class="media-item" data-aos="fade-up" data-aos-delay="200">
                         <video controls poster="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80">
-                            <source src="videos/workshop.mp4" type="video/mp4">
+                            <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                         <div class="media-info">
@@ -507,7 +178,7 @@
                     </div>
                     <div class="media-item" data-aos="fade-up" data-aos-delay="300">
                         <video controls poster="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=600&q=80">
-                            <source src="videos/event.mp4" type="video/mp4">
+                            <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                         <div class="media-info">
@@ -568,410 +239,22 @@
     </button>
 
     <!-- Scripts -->
+    <script src="js/mobile-menu.js"></script>
+    <script src="js/marquee.js"></script>
     <script src="js/main.js"></script>
-    <!-- AOS JS -->
+    <script src="js/media.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
             once: true,
             mirror: false
         });
-        
-        // Set current year in footer
+    </script>   
+    <!-- Set current year in footer -->
+    <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // News Pagination
-        document.addEventListener('DOMContentLoaded', function() {
-            const newsGrid = document.querySelector('.news-grid');
-            const paginationNumbers = document.querySelector('.pagination-numbers');
-            const prevButton = document.querySelector('.pagination-btn.prev');
-            const nextButton = document.querySelector('.pagination-btn.next');
-            const cardsPerPage = 6;
-            let currentPage = 1;
-
-            // Sample news data - replace this with your actual news data
-            const newsData = [
-                {
-                    title: "New Certification Program Launched",
-                    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
-                    date: "March 15, 2024",
-                    author: "Admin",
-                    excerpt: "We are excited to announce the launch of our new certification program in Digital Marketing. This comprehensive program covers all aspects of modern digital marketing strategies."
-                },
-                {
-                    title: "CDI Accredited by NITA",
-                    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80",
-                    date: "March 10, 2024",
-                    author: "Admin",
-                    excerpt: "We are thrilled to announce a major milestone in our journey of excellence—our official registration with the National Industrial Training Authority (NITA) Kenya! This achievement marks a new era for our training institute, solidifying our commitment to providing top-tier, industry-recognized programs that empower individuals and businesses with cutting-edge skills. As a NITA-accredited institution, we are now positioned to offer certified courses that meet the highest standards of professional development, ensuring our students receive training that is both credible and impactful.<br>This accreditation is not just a recognition; it is a testament to our dedication to quality education and skill development. Our expert trainers, well-structured curricula, and hands-on learning approach will continue to shape the futures of countless professionals across various industries. With this registration, we are able to offer our learners the opportunity to access training that is not only compliant with industry regulations but also eligible for employer training reimbursements under NITA guidelines. This means more accessible, affordable, and high-quality education for all! <br>We extend our deepest gratitude to our staff, students, and stakeholders who have supported us on this journey. Your trust and commitment have been the driving force behind our success, and we are excited for what lies ahead. We invite you to join us in celebrating this achievement and to explore the new possibilities that come with our NITA-approved courses. Together, we will continue to shape a skilled and empowered workforce for Kenya’s future. Stay tuned for exciting programs, workshops, and training opportunities that will take your career to the next level!"
-                },
-                {
-                    title: "New Partnership Announcement",
-                    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80",
-                    date: "March 5, 2024",
-                    author: "Admin",
-                    excerpt: "We are proud to announce our new partnership with leading industry players to enhance our training programs and provide better opportunities for our students."
-                },
-                {
-                    title: "Student Success Story",
-                    image: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=600&q=80",
-                    date: "March 1, 2024",
-                    author: "Admin",
-                    excerpt: "Read about how our Data Analysis course helped John Doe secure a position at a leading tech company. His journey from student to professional is truly inspiring."
-                },
-                {
-                    title: "Upcoming Workshop",
-                    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
-                    date: "February 28, 2024",
-                    author: "Admin",
-                    excerpt: "Join our upcoming workshop on Project Management Fundamentals. Learn essential skills from industry experts and enhance your career prospects."
-                },
-                {
-                    title: "New Course Launch",
-                    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80",
-                    date: "February 25, 2024",
-                    author: "Admin",
-                    excerpt: "We are launching a new course in Business Analytics. This course will equip students with the skills needed to analyze and interpret business data effectively."
-                },
-                {
-                    title: "Alumni Meetup",
-                    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80",
-                    date: "February 20, 2024",
-                    author: "Admin",
-                    excerpt: "Our annual alumni meetup was a great success! Graduates from various programs came together to share their experiences and network with industry professionals."
-                },
-                {
-                    title: "Faculty Development Program",
-                    image: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=600&q=80",
-                    date: "February 15, 2024",
-                    author: "Admin",
-                    excerpt: "Our faculty members recently completed an intensive development program to enhance their teaching methodologies and stay updated with industry trends."
-                }
-            ];
-
-            // Function to create news cards
-            function createNewsCards() {
-                newsGrid.innerHTML = ''; // Clear existing cards
-                const start = (currentPage - 1) * cardsPerPage;
-                const end = start + cardsPerPage;
-                const currentPageCards = newsData.slice(start, end);
-
-                currentPageCards.forEach(news => {
-                    const card = document.createElement('div');
-                    card.className = 'news-card';
-                    card.innerHTML = `
-                        <div class="news-image">
-                            <img src="${news.image}" alt="${news.title}">
-                        </div>
-                        <div class="news-content">
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar"></i> ${news.date}</span>
-                                <span><i class="far fa-user"></i> ${news.author}</span>
-                            </div>
-                            <h3>${news.title}</h3>
-                            <p class="news-excerpt">${news.excerpt}</p>
-                            <button class="read-more">Read More</button>
-                        </div>
-                    `;
-                    newsGrid.appendChild(card);
-                });
-
-                // Reinitialize read more buttons for new cards
-                initReadMoreButtons();
-            }
-
-            // Function to update pagination
-            function updatePagination() {
-                const totalPages = Math.ceil(newsData.length / cardsPerPage);
-                paginationNumbers.innerHTML = '';
-                
-                // Previous button state
-                prevButton.disabled = currentPage === 1;
-                
-                // Next button state
-                nextButton.disabled = currentPage === totalPages;
-
-                // Always show first page
-                addPageNumber(1);
-                
-                if (currentPage > 3) {
-                    paginationNumbers.innerHTML += '<span class="pagination-ellipsis">...</span>';
-                }
-                
-                // Show pages around current page
-                for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
-                    addPageNumber(i);
-                }
-                
-                if (currentPage < totalPages - 2) {
-                    paginationNumbers.innerHTML += '<span class="pagination-ellipsis">...</span>';
-                }
-                
-                // Always show last page if there's more than one page
-                if (totalPages > 1) {
-                    addPageNumber(totalPages);
-                }
-            }
-
-            // Function to add page number button
-            function addPageNumber(pageNum) {
-                const pageButton = document.createElement('button');
-                pageButton.textContent = pageNum;
-                pageButton.classList.add('pagination-number');
-                if (pageNum === currentPage) {
-                    pageButton.classList.add('active');
-                }
-                pageButton.addEventListener('click', () => {
-                    currentPage = pageNum;
-                    createNewsCards();
-                    updatePagination();
-                });
-                paginationNumbers.appendChild(pageButton);
-            }
-
-            // Event listeners for pagination buttons
-            prevButton.addEventListener('click', () => {
-                if (currentPage > 1) {
-                    currentPage--;
-                    createNewsCards();
-                    updatePagination();
-                }
-            });
-
-            nextButton.addEventListener('click', () => {
-                const totalPages = Math.ceil(newsData.length / cardsPerPage);
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    createNewsCards();
-                    updatePagination();
-                }
-            });
-
-            // Function to initialize read more buttons
-            function initReadMoreButtons() {
-                const readMoreButtons = document.querySelectorAll('.read-more');
-                const expandedNews = document.querySelector('.expanded-news');
-
-                readMoreButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        const newsCard = button.closest('.news-card');
-                        const newsData = {
-                            title: newsCard.querySelector('h3').textContent,
-                            image: newsCard.querySelector('.news-image img').src,
-                            date: newsCard.querySelector('.news-meta span:first-child').textContent,
-                            author: newsCard.querySelector('.news-meta span:last-child').textContent,
-                            excerpt: newsCard.querySelector('.news-excerpt').textContent
-                        };
-
-                        // Update expanded news content
-                        const expandedContent = expandedNews.querySelector('.expanded-news-content');
-                        expandedContent.innerHTML = `
-                            <button class="close-expanded-news" aria-label="Close expanded news">
-                                <i class="fas fa-times"></i>
-                            </button>
-                            <div class="expanded-news-header">
-                                <img src="${newsData.image}" alt="${newsData.title}">
-                                <div class="expanded-news-title">
-                                    <h2>${newsData.title}</h2>
-                                    <div class="expanded-news-meta">
-                                        <span><i class="far fa-calendar"></i> ${newsData.date}</span>
-                                        <span><i class="far fa-user"></i> ${newsData.author}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="expanded-news-body">
-                                <p>${newsData.excerpt}</p>
-                            </div>
-                        `;
-
-                        // Show expanded news
-                        expandedNews.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-
-                        // Add event listener to new close button
-                        const closeButton = expandedContent.querySelector('.close-expanded-news');
-                        closeButton.addEventListener('click', closeExpandedNews);
-                    });
-                });
-            }
-
-            // Function to close expanded news
-            function closeExpandedNews() {
-                const expandedNews = document.querySelector('.expanded-news');
-                expandedNews.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-
-            // Close expanded news when clicking outside
-            document.querySelector('.expanded-news').addEventListener('click', (e) => {
-                if (e.target === e.currentTarget) {
-                    closeExpandedNews();
-                }
-            });
-
-            // Close expanded news when pressing Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && document.querySelector('.expanded-news').classList.contains('active')) {
-                    closeExpandedNews();
-                }
-            });
-
-            // Initial setup
-            createNewsCards();
-            updatePagination();
-        });
-
-        // Back to Top Button Functionality
-        const backToTopButton = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Theme Toggle Functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-        
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeIcon.classList.replace('fa-sun-haze', 'fa-moon-stars');
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            if (newTheme === 'dark') {
-                themeIcon.classList.replace('fa-sun-haze', 'fa-moon-stars');
-            } else {
-                themeIcon.classList.replace('fa-moon-stars', 'fa-sun-haze');
-            }
-        });
-
-        // Add marquee script
-        document.addEventListener('DOMContentLoaded', function() {
-            const marqueeItems = document.querySelector('.marquee-items');
-            if (marqueeItems) {
-                const items = marqueeItems.innerHTML;
-                marqueeItems.innerHTML = items + items;
-            }
-
-            // Hide marquee after 20 seconds
-            const newsMarquee = document.querySelector('.news-marquee');
-            if (newsMarquee) {
-                setTimeout(() => {
-                    newsMarquee.classList.add('hidden');
-                }, 20000);
-            }
-
-            // News Card Expansion Functionality
-            const readMoreButtons = document.querySelectorAll('.read-more');
-            const expandedNews = document.querySelector('.expanded-news');
-
-            readMoreButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const newsCard = button.closest('.news-card');
-                    const newsData = {
-                        title: newsCard.querySelector('h3').textContent,
-                        image: newsCard.querySelector('.news-image img').src,
-                        date: newsCard.querySelector('.news-meta span:first-child').textContent,
-                        author: newsCard.querySelector('.news-meta span:last-child').textContent,
-                        excerpt: newsCard.querySelector('.news-excerpt').textContent // Use the same content for full view
-                    };
-
-                    // Update expanded news content
-                    const expandedContent = expandedNews.querySelector('.expanded-news-content');
-                    expandedContent.innerHTML = `
-                        <button class="close-expanded-news" aria-label="Close expanded news">
-                            <i class="fas fa-times"></i>
-                        </button>
-                        <div class="expanded-news-header">
-                            <img src="${newsData.image}" alt="${newsData.title}">
-                            <div class="expanded-news-title">
-                                <h2>${newsData.title}</h2>
-                                <div class="expanded-news-meta">
-                                    <span><i class="far fa-calendar"></i> ${newsData.date}</span>
-                                    <span><i class="far fa-user"></i> ${newsData.author}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="expanded-news-body">
-                            ${newsData.fullContent.split('<br>').map(paragraph => 
-                                paragraph.trim() ? `<p>${paragraph.trim()}</p>` : ''
-                            ).join('')}
-                        </div>
-                    `;
-
-                    // Show expanded news
-                    expandedNews.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-
-                    // Add event listener to new close button
-                    const closeButton = expandedContent.querySelector('.close-expanded-news');
-                    closeButton.addEventListener('click', closeExpandedNews);
-                });
-            });
-
-            // Close expanded news when clicking outside
-            expandedNews.addEventListener('click', (e) => {
-                if (e.target === expandedNews) {
-                    closeExpandedNews();
-                }
-            });
-
-            // Close expanded news when pressing Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && expandedNews.classList.contains('active')) {
-                    closeExpandedNews();
-                }
-            });
-
-            function closeExpandedNews() {
-                expandedNews.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Section selector functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const selectorBtns = document.querySelectorAll('.selector-btn');
-            
-            selectorBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Remove active class from all buttons
-                    selectorBtns.forEach(b => b.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Scroll to section
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetSection = document.getElementById(targetId);
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-        });
     </script>
 </body>
-</html> 
+</html>

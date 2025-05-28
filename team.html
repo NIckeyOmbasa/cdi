@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team - CDI</title>
-    <link rel="icon" type="image/png" href="https://i.ibb.co/qMNWkg71/cdilogo-color.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- AOS CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Team - CDI</title>
+        <link rel="icon" type="image/png" href="https://i.ibb.co/qMNWkg71/cdilogo-color.png">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <!-- AOS CSS -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <!-- Scripts -->
+        <script src="js/mobile-menu.js"></script>
+        <script src="js/marquee.js"></script>
+    </head>
 <body>
     <!-- Header/Navigation -->
     <header class="header">
@@ -39,23 +42,11 @@
             </div>
         </div>
     </header>
-
     <!-- News Marquee -->
     <div class="news-marquee">
-        <div class="marquee-container">
-            <div class="marquee-content">
-                <span class="marquee-label">Latest Updates:</span>
-                <div class="marquee-items">
-                    <span>🎓 New Certification Program Launched - Enroll Now!</span>
-                    <span>📅 Upcoming Workshop: Digital Marketing Essentials - Register Today</span>
-                    <span>🏆 Congratulations to Our Latest Graduates!</span>
-                    <span>🌟 Special Offer: 20% Off on All Business Courses</span>
-                    <span>📢 New Partnership with Industry Leaders Announced</span>
-                </div>
-            </div>
-        </div>
+        <div class="marquee-label">Latest News</div>
+        <div class="marquee-content"></div>
     </div>
-
     <!-- Team Hero -->
     <section class="team-hero">
         <div class="container">
@@ -171,8 +162,8 @@
                     <div class="team-member-expanded" data-aos="fade-up">
                         <div class="member-main">
                             <img src="images/team1.jpeg" alt="Team Member">
-                            <h3>Sarah Johnson</h3>
-                            <p>Lead Software Instructor</p>
+                            <h3>Mercy Waithira</h3>
+                            <p>Lead Trainer</p>
                             <button class="btn-view-profile">View Profile</button>
                         </div>
                         <div class="member-details">
@@ -456,257 +447,17 @@
         </div>
     </div>
 
-    <!-- Add mobile-menu.js before main.js -->
-    <script src="js/mobile-menu.js"></script>
-    <script src="js/main.js"></script>
-    <style>
-        /* Mobile Menu Styles */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1000;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .navbar {
-                position: fixed;
-                top: 80px; /* Header height */
-                left: 0;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: var(--bg-color);
-                padding: 2rem;
-                transform: translateX(-100%);
-                transition: transform 0.3s ease-in-out;
-                z-index: 999;
-            }
-
-            .navbar.active {
-                transform: translateX(0);
-            }
-
-            .navbar ul {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-
-            .navbar ul li {
-                width: 100%;
-            }
-
-            .navbar ul li a {
-                display: block;
-                padding: 1rem;
-                font-size: 1.2rem;
-            }
-
-            .mobile-menu-btn.active i {
-                transform: rotate(90deg);
-            }
-
-            .mobile-menu-btn i {
-                transition: transform 0.3s ease;
-            }
-        }
-    </style>
-
-    <script>
-        // Team member profile toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set current year in footer
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-            
-            const profileButtons = document.querySelectorAll('.btn-view-profile');
-            
-            profileButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const memberCard = this.closest('.team-member-expanded');
-                    const details = memberCard.querySelector('.member-details');
-                    
-                    // Close all other open profiles first
-                    document.querySelectorAll('.team-member-expanded').forEach(card => {
-                        if (card !== memberCard && card.classList.contains('active')) {
-                            card.classList.remove('active');
-                            card.querySelector('.btn-view-profile').textContent = 'View Profile';
-                        }
-                    });
-                    
-                    // Toggle current profile
-                    memberCard.classList.toggle('active');
-                    this.textContent = memberCard.classList.contains('active') ? 'Hide Profile' : 'View Profile';
-                });
-            });
-            
-            // Close profile when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.team-member-expanded') && !e.target.closest('.btn-view-profile')) {
-                    document.querySelectorAll('.team-member-expanded').forEach(card => {
-                        card.classList.remove('active');
-                        card.querySelector('.btn-view-profile').textContent = 'View Profile';
-                    });
-                }
-            });
-        });
-    </script>
-    <!-- AOS JS -->
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         // Initialize AOS
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
-            once: true,
-            mirror: false
-        });
-        
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Back to Top Button Functionality
-        const backToTopButton = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Theme Toggle Functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-        
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            if (newTheme === 'dark') {
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-            } else {
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-            }
+            once: true
         });
     </script>
-
-    <style>
-        /* Add marquee styles */
-        .news-marquee {
-            background-color: var(--secondary-color);
-            padding: 10px 0;
-            overflow: hidden;
-            position: sticky;
-            top: 80px; /* Adjust based on your header height */
-            z-index: 100;
-            width: 100%;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-
-        .news-marquee.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .marquee-container {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .marquee-content {
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-            width: 100%;
-        }
-
-        .marquee-label {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            font-weight: 600;
-            padding: 5px 20px;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-            border-radius: 4px;
-            margin-right: 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .marquee-items {
-            display: inline-flex;
-            animation: marquee 45s linear infinite;
-            white-space: nowrap;
-            position: relative;
-            z-index: 1;
-        }
-
-        .marquee-items span {
-            color: var(--primary-color);
-            padding: 0 30px;
-            font-size: 1rem;
-            white-space: nowrap;
-        }
-
-        @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        .marquee-items:hover {
-            animation-play-state: paused;
-        }
-    </style>
-
-    <script>
-        // Add marquee script
-        document.addEventListener('DOMContentLoaded', function() {
-            const marqueeItems = document.querySelector('.marquee-items');
-            if (marqueeItems) {
-                const items = marqueeItems.innerHTML;
-                marqueeItems.innerHTML = items + items;
-            }
-
-            // Hide marquee after 20 seconds
-            const newsMarquee = document.querySelector('.news-marquee');
-            if (newsMarquee) {
-                setTimeout(() => {
-                    newsMarquee.classList.add('hidden');
-                }, 20000);
-            }
-        });
-    </script>
+    <script src="js/mobile-menu.js"></script>
+    <script src="js/team.js"></script>
 </body>
 </html>
