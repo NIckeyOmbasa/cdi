@@ -276,11 +276,20 @@ header.scrolled .logo h1 span {
 .navbar ul li a.btn-login::after {
     display: none;
 }
+.mobile-menu-btn {
+    display: none;
+}
+.theme-toggle{
+    display: none;
+}
 
 /* Mobile Menu Styles */
 @media (max-width: 768px) {
     .mobile-menu-btn {
         display: block;
+    }
+    .theme-toggle{
+        display: none;
     }
 
     .navbar {
